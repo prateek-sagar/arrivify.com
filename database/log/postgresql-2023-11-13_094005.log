@@ -1,6 +1,0 @@
-2023-11-13 09:40:05.784 IST [23984] LOG:  database system was shut down at 2023-11-13 09:39:57 IST
-2023-11-13 09:45:05.792 IST [19012] LOG:  checkpoint starting: time
-2023-11-13 09:45:12.865 IST [19012] LOG:  checkpoint complete: wrote 58 buffers (0.4%); 0 WAL file(s) added, 0 removed, 0 recycled; write=6.007 s, sync=0.411 s, total=7.074 s; sync files=30, longest=0.034 s, average=0.014 s; distance=247 kB, estimate=247 kB
-2023-11-13 09:47:12.449 IST [19012] LOG:  shutting down
-2023-11-13 09:47:12.478 IST [19012] LOG:  checkpoint starting: shutdown immediate
-2023-11-13 09:47:12.557 IST [19012] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.109 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=222 kB
