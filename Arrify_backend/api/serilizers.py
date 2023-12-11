@@ -9,4 +9,6 @@ class VisitorSerializer(serializers.ModelSerializer):
     class Meta:
         """Serializer for Visitors to handle the data of the Visitors model"""
         model = VisitorsModel
-        fields = '__all__'
+        fields = ('id', 'email', 'first_name', 
+                  'last_name', 'purpose', 'to_meet','address')
+                #   , 'purpose', 'to_meet', 'phone', 'adress')

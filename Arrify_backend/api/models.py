@@ -12,6 +12,10 @@ class EmployeeModel(models.Model):
     available = models.BooleanField(default=True)
     password = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.designation
+    
+
 
 class VisitorsModel(models.Model):
     """
@@ -23,7 +27,6 @@ class VisitorsModel(models.Model):
     last_name = models.CharField(max_length=50)                        
     purpose = models.CharField(max_length=50, null=False)
     to_meet  = models.ForeignKey("EmployeeModel", on_delete=models.CASCADE, null=False)     # Designation of the employee
-    phone = PhoneNumberField(null=False, blank=False, unique=True)
-    adress = models.CharField(max_length=512)
+    address = models.CharField(max_length=512)
     check_in = models.DateTimeField(auto_now_add=True)
-    check_out = models.DateTimeField(null=True)
+    check_out = models.DateTimeField(null=True, blank=True)
