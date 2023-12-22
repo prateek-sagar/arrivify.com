@@ -1,7 +1,7 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
 
-export default function Login_modal(props) {
+export default function CheckInModal(props) {
   const handleClose = () => {
     props.onClose();
   };
@@ -27,52 +27,83 @@ export default function Login_modal(props) {
             <div className="relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
               <div className="relative px-4 pb-4 pt-5 sm:p-6 sm:pb-4 rounded-lg">
                 <div className="flex justify-center items-center">
-                  <form class="w-full max-w-xs">
-                    <div class="mb-4">
+                  <form className="w-full max-w-xs">
+                    <div className="mb-4">
                       <label
-                        class="block text-gray-700 text-sm font-bold mb-2"
+                        className="block text-gray-700 text-sm font-bold mb-2"
                         for="username"
                       >
-                        Username
+                        First Name
                       </label>
                       <input
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="username"
                         type="text"
                         placeholder="Username"
                       />
                     </div>
-                    <div class="mb-6">
+                    <div className="mb-6">
                       <label
-                        class="block text-gray-700 text-sm font-bold mb-2"
-                        for="password"
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="password"
                       >
-                        Password
+                        Email
                       </label>
                       <input
-                        class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                        id="password"
-                        type="password"
-                        autoComplete="off"
-                        placeholder="******************"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        type="email"
+                        placeholder="abc@mail.com"
                       />
-                      <p class="text-red-500 text-xs italic">
-                        Please choose a password.
-                      </p>
                     </div>
-                    <div class="flex items-center justify-between">
+                    {/* Address */}
+                    <div className="mb-6">
+                      <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="password"
+                      >
+                        Address
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        type="email"
+                        placeholder="abc@mail.com"
+                      />
+                    </div>
+                    {/* purpose */}
+                    <div className="mb-6">
+                      <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="password"
+                      >
+                        Purpose
+                      </label>
+                      <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        type="email"
+                        placeholder="abc@mail.com"
+                      />
+                    </div>
+                    {/* to meet */}
+                    <div className="mb-6">
+                      <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="password"
+                      >
+                        To Meet
+                      </label>
+                      <input
+                        className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        type="email"
+                        placeholder="abc@mail.com"
+                      />
+                    </div>
+                    <div className="flex items-center justify-end">
                       <button
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
                       >
-                        Sign In
+                        Check In
                       </button>
-                      <a
-                        class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                        href="#"
-                      >
-                        Forgot Password?
-                      </a>
                     </div>
                   </form>
                 </div>
