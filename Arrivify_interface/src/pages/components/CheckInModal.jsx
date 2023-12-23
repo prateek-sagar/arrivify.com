@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
+const to_meet = async () => {
+  try {
+    let res = await fetch("http://127.0.0.1:8000/api/employees");
+    if (res.ok) {
+      console.log(data);
+      let data = await res.json();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  console.log("to meet data");
+};
 
 export default function CheckInModal(props) {
+  useEffect(() => {
+    to_meet();
+  }, []);
+
   const handleClose = () => {
     props.onClose();
   };
@@ -31,7 +47,7 @@ export default function CheckInModal(props) {
                     <div className="mb-4">
                       <label
                         className="block text-gray-700 text-sm font-bold mb-2"
-                        for="username"
+                        htmlFor="username"
                       >
                         First Name
                       </label>
