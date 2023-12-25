@@ -11,4 +11,9 @@ class VisitorSerializer(serializers.ModelSerializer):
         model = VisitorsModel
         fields = ('id', 'email', 'first_name', 
                   'last_name', 'purpose', 'to_meet','address')
-                #   , 'purpose', 'to_meet', 'phone', 'adress')
+
+class EmployeesSerializer(serializers.ModelSerializer):
+    """Serializer for Employees to handle the data of the Employees model"""
+    class Meta:
+        model = EmployeeModel
+        fields = '__all__'

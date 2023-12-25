@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import VisitorsModel, EmployeeModel
-from .serilizers import VisitorSerializer
+from .serializers import VisitorSerializer
 
 class VisitorsView(APIView):
     visitor_model = VisitorsModel
@@ -27,5 +27,9 @@ class VisitorsView(APIView):
         
         return Response({'msg': 'Invalid bad request'}, status=status.HTTP_400_BAD_REQUEST)
 
+class EmployeesView(APIView):
+    def get(self, request, format=None):
+        model = EmployeeModel
+        mydata = model.objects.all().values()
 
-
+        return Response({"data": mydata}, status=status.HTTP_200_OK)
