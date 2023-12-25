@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 const to_meet = async () => {
   try {
-    let res = await fetch("http://127.0.0.1:8000/api/employees");
+    let res = await fetch("http://127.0.0.1:8000/api/employees/");
     if (res.ok) {
       console.log(data);
       let data = await res.json();
