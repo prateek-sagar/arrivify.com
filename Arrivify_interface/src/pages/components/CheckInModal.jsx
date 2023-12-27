@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
-const to_meet = async () => {
+const to_meet = async (setOptions) => {
   try {
     let res = await fetch("http://127.0.0.1:8000/api/employees/");
     if (res.ok) {
       let data = await res.json();
-      console.log(data);
+      setOptions(data.data);
+      // console.log(data.data[0].designation);
     }
   } catch (error) {
     console.log(error);
   }
-  console.log("to meet data");
+  // console.log("to meet data");
 };
-
+// const options = ["Human resources", "product manager"];
 export default function CheckInModal(props) {
+  const [options, setOptions] = useState([]);
   useEffect(() => {
-    to_meet();
+    to_meet(setOptions);
   }, []);
 
   const handleClose = () => {
@@ -107,11 +109,16 @@ export default function CheckInModal(props) {
                       >
                         To Meet
                       </label>
-                      <input
-                        className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                        type="email"
-                        placeholder="abc@mail.com"
-                      />
+                      <select
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        defaultValue="Employee"
+                      >
+                        {options.map((options) => (
+                          <option key={options.id} value={options.id}>
+                            {options.designation}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                     <div className="flex items-center justify-end">
                       <button
