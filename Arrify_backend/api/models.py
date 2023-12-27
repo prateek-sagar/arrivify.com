@@ -26,7 +26,7 @@ class VisitorsModel(models.Model):
     first_name = models.CharField(max_length=50)                       
     last_name = models.CharField(max_length=50)                        
     purpose = models.CharField(max_length=50, null=False)
-    to_meet  = models.ForeignKey("EmployeeModel", on_delete=models.CASCADE, null=False)     # Designation of the employee
+    to_meet  = models.ForeignKey(EmployeeModel, on_delete=models.CASCADE, null=False)     # Designation of the employee
     address = models.CharField(max_length=512)
     check_in = models.DateTimeField(auto_now_add=True)
     check_out = models.DateTimeField(null=True, blank=True)
