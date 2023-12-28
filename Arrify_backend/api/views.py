@@ -17,11 +17,13 @@ class VisitorsView(APIView):
             e_mail = serializer.data.get("email")
             _purpose = serializer.data.get("purpose")
             to_meet = serializer.data.get("to_meet")
+            to_meet_data = EmployeeModel.objects.get(id=to_meet)
+            
             # phone = serializer.data.get("phone_number")
-            address = serializer.data.get("to_meet")
+            address = serializer.data.get("address")
             model = VisitorsModel(email = e_mail, first_name = f_name, last_name = l_name,
-                                  purpose = _purpose, to_meet = to_meet,
-                                  adress=address)
+                                  purpose = _purpose, to_meet = to_meet_data,
+                                  address=address)
             model.save()
             return Response({'msg': f_name}, status=status.HTTP_201_CREATED)
         
