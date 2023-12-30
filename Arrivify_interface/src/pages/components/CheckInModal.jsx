@@ -1,10 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
-// request to backend for the available employees and set it to the options available to visitors
-const to_meet = async (setOptions) => {
+// store the data of the visitors to checkin
+const visitor_checkin = async (_name, _email, _purpose, _toMeet, _address) => {
+  const url = "http://127.0.0.1:8000/api/visitors/";
+  const name_array = _name.split(" "); // convert of data into first and last name to store in database
+  console.log(name_array, _toMeet);
   try {
-    let res = await fetch("http://127.0.0.1:8000/api/employees/");
+    let res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: name_array[0],
+        last_name: name_array[1],
+        email: _email,
+        purpose: _purpose,
+        to_meet: _toMeet,
+        address: _address,
+      }),
+    });
+    if (res.ok) {
+      let res_data = await res.json();
+      console.log(res_data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// request to backend for the available employees and set it to the options available to visitors
+const to_meet_func = async (setOptions) => {
+  const url = "http://127.0.0.1:8000/api/employees/";
+  try {
+    let res = await fetch(url);
     if (res.ok) {
       let data = await res.json();
       setOptions(data.data);
@@ -20,7 +50,7 @@ export default function CheckInModal(props) {
   const [options, setOptions] = useState([]); //state to store the array of the response of the data
   // handle the calling of the to_meet functions
   useEffect(() => {
-    to_meet(setOptions);
+    to_meet_func(setOptions);
   }, []);
 
   const handleClose = () => {
@@ -105,7 +135,7 @@ export default function CheckInModal(props) {
                       <input
                         onChange={(e) => {
                           setPurpose(e.target.value);
-                          console.log(purpose);
+                          // console.log(purpose);
                         }}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="Ex: Interview"
@@ -121,7 +151,7 @@ export default function CheckInModal(props) {
                         name="select"
                         defaultValue="employee"
                         onChange={(event) => {
-                          console.log(event.target.value);
+                          // console.log(event.target.value);
                           setToMeet(event.target.value);
                         }}
                       >
@@ -136,6 +166,15 @@ export default function CheckInModal(props) {
                       <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="button"
+                        onClick={() => {
+                          visitor_checkin(
+                            name,
+                            email,
+                            purpose,
+                            toMeet,
+                            address
+                          );
+                        }}
                       >
                         Check In
                       </button>
