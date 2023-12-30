@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
+
+// request to backend for the available employees and set it to the options available to visitors
 const to_meet = async (setOptions) => {
   try {
     let res = await fetch("http://127.0.0.1:8000/api/employees/");
     if (res.ok) {
       let data = await res.json();
       setOptions(data.data);
-      // console.log(data.data[0].designation);
+      // console.log(data.data[0].id);
     }
   } catch (error) {
     console.log(error);
   }
   // console.log("to meet data");
 };
-// const options = ["Human resources", "product manager"];
+
 export default function CheckInModal(props) {
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState([]); //state to store the array of the response of the data
+  // handle the calling of the to_meet functions
   useEffect(() => {
     to_meet(setOptions);
   }, []);
@@ -23,6 +26,15 @@ export default function CheckInModal(props) {
   const handleClose = () => {
     props.onClose();
   };
+
+  //different states to store the details of the user
+  const [name, setName] = useState("");
+  const [purpose, setPurpose] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [toMeet, setToMeet] = useState(1); // who want to meet the visitors
+
+  // store the close style
   const close_style = {
     color: "white",
     fontSize: "2em",
@@ -47,71 +59,71 @@ export default function CheckInModal(props) {
                 <div className="flex justify-center items-center">
                   <form className="w-full max-w-xs">
                     <div className="mb-4">
-                      <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="username"
-                      >
-                        First Name
+                      <label className="block text-gray-700 text-sm font-bold mb-2">
+                        Name
                       </label>
                       <input
+                        onChange={(event) => {
+                          setName(event.target.value);
+                        }}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="username"
                         type="text"
-                        placeholder="Username"
+                        placeholder="Full Name"
                       />
                     </div>
                     <div className="mb-6">
-                      <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="password"
-                      >
+                      <label className="block text-gray-700 text-sm font-bold mb-2">
                         Email
                       </label>
                       <input
+                        onChange={(event) => {
+                          setEmail(event.target.value);
+                        }}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                         type="email"
-                        placeholder="abc@mail.com"
+                        placeholder="Enter Email"
                       />
                     </div>
                     {/* Address */}
                     <div className="mb-6">
-                      <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="password"
-                      >
+                      <label className="block text-gray-700 text-sm font-bold mb-2">
                         Address
                       </label>
                       <input
+                        onChange={(event) => {
+                          setAddress(event.target.value);
+                        }}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                        type="email"
-                        placeholder="abc@mail.com"
+                        placeholder="Enter Address"
                       />
                     </div>
                     {/* purpose */}
                     <div className="mb-6">
-                      <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="password"
-                      >
+                      <label className="block text-gray-700 text-sm font-bold mb-2">
                         Purpose
                       </label>
                       <input
+                        onChange={(e) => {
+                          setPurpose(e.target.value);
+                          console.log(purpose);
+                        }}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                        type="email"
-                        placeholder="abc@mail.com"
+                        placeholder="Ex: Interview"
                       />
                     </div>
                     {/* to meet */}
                     <div className="mb-6">
-                      <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="password"
-                      >
+                      <label className="block text-gray-700 text-sm font-bold mb-2">
                         To Meet
                       </label>
                       <select
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                        defaultValue="Employee"
+                        name="select"
+                        defaultValue="employee"
+                        onChange={(event) => {
+                          console.log(event.target.value);
+                          setToMeet(event.target.value);
+                        }}
                       >
                         {options.map((options) => (
                           <option key={options.id} value={options.id}>
