@@ -45,8 +45,9 @@ const to_meet_func = async (setOptions) => {
   }
   // console.log("to meet data");
 };
-
+//main function to store the form and functions
 export default function CheckInModal(props) {
+  const [showVisitorsCard, setShowVisitorsCard] = useState(false);
   const [options, setOptions] = useState([]); //state to store the array of the response of the data
   // handle the calling of the to_meet functions
   useEffect(() => {
@@ -55,6 +56,9 @@ export default function CheckInModal(props) {
 
   const handleClose = () => {
     props.onClose();
+  };
+  const handleCheckIn = () => {
+    props.checkin();
   };
 
   //different states to store the details of the user
@@ -174,6 +178,8 @@ export default function CheckInModal(props) {
                             toMeet,
                             address
                           );
+                          handleCheckIn();
+                          console.log("check in");
                         }}
                       >
                         Check In
