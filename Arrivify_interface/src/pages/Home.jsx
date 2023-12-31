@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import Login_modal from "./components/Login_modal";
 import CheckInModal from "./components/CheckInModal";
-
+import VisitorsCard from "./components/VisitorsCard";
 export default function Home() {
   const [showLogin, setShowLogin] = useState(false);
   const [showCheckIn, setShowCheckIn] = useState(false);
+  const [showVisitorsCard, setShowVisitorsCard] = useState(false);
   const handleCloseLogin = () => setShowLogin(false);
   const handleCloseCheckIn = () => setShowCheckIn(false);
+  const handleCloseVisitorsCard = () => setShowVisitorsCard(false);
+  const handleCheckInWindow = () => {
+    setShowCheckIn(false);
+    setShowVisitorsCard(true);
+  };
   return (
     // whole screen
     <>
@@ -46,7 +52,15 @@ export default function Home() {
       </div>
       {/* Modal Code */}
       <Login_modal onClose={handleCloseLogin} visible={showLogin} />
-      <CheckInModal onClose={handleCloseCheckIn} visible={showCheckIn} />
+      <CheckInModal
+        onClose={handleCloseCheckIn}
+        checkin={handleCheckInWindow}
+        visible={showCheckIn}
+      />
+      <VisitorsCard
+        onclose={handleCloseVisitorsCard}
+        visible={showVisitorsCard}
+      />
     </>
   );
 }
