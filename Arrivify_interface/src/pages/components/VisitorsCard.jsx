@@ -1,7 +1,6 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
-export default function VisitorsCard(props) {
-  if (!props.visible) return null;
+export default function VisitorsCard() {
   const close_style = {
     color: "white",
     fontSize: "2em",
@@ -42,7 +41,7 @@ export default function VisitorsCard(props) {
                 </div>
               </div>
               <div className="absolute -top-3 -right-3 cursor-pointer rounded-full flex items-center justify-center">
-                <IoClose style={close_style} onClick={props.onclose} />
+                <IoClose style={close_style} />
               </div>
             </div>
           </div>
