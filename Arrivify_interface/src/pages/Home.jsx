@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Login_modal from "./components/Login_modal";
 import CheckInModal from "./components/CheckInModal";
 import VisitorsCard from "./components/VisitorsCard";
+import NavBar from "./components/NavBar";
 export default function Home() {
   const [showLogin, setShowLogin] = useState(false);
   const [showCheckIn, setShowCheckIn] = useState(false);
@@ -17,7 +18,8 @@ export default function Home() {
     // whole screen
     <>
       <div className="w-full h-screen bg-white flex-col justify-center items-center inline-flex">
-        <ul className="self-stretch grow shrink basis-0 px-4 py-8 flex-col justify-center items-center gap-4 inline-flex md:flex-row md:gap-8 md:py-12 md:px-8 lg:p-12 lg:gap-16">
+        <NavBar />
+        <ul className="self-stretch grow shrink basis-0 px-4 py-8 flex-col justify-center items-center gap-4 inline-flex md:flex-row md:gap-8 md:py-12 md:px-8 lg:p-12 lg:gap-16 mt-4">
           <li className="grow shrink basis-0 self-stretch bg-zinc-300 flex flex-col justify-center items-center rounded-xl hover:scale-105 duration-300 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl shadow-xl group-hover:shadow-2xl shadow-gray-400">
             <h1 className="w-full px-4 md:px-8 font-Yantramanav font-black text-6xl md:text-7xl lg:text-8xl py-4 md:py-8">
               For <br /> Visitors
