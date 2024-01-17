@@ -7,7 +7,7 @@ export default function Home() {
     // whole screen
     <>
       <NavBar />
-      <div className="w-full bg-white flex-col justify-center items-center inline-flex">
+      <div className="w-full flex-col justify-center items-center inline-flex">
         <div className="w-full grid grid-cols-1 h-[100dvh]">
           <ul className="self-stretch grow shrink basis-0 px-4 py-8 flex-col justify-center items-center gap-4 inline-flex md:flex-row md:gap-8 md:py-12 md:px-8 lg:p-12 lg:gap-16 mt-4">
             <li className="grow shrink basis-0 self-stretch flex flex-col justify-center items-center rounded-xl duration-300 bg-red-300">
