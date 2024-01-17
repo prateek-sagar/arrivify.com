@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 // store the data of the visitors to checkin
 const visitor_checkin = async (_name, _email, _purpose, _toMeet, _address) => {
@@ -46,20 +47,12 @@ const to_meet_func = async (setOptions) => {
   // console.log("to meet data");
 };
 //main function to store the form and functions
-export default function CheckInModal(props) {
-  const [showVisitorsCard, setShowVisitorsCard] = useState(false);
+export default function CheckInModal() {
   const [options, setOptions] = useState([]); //state to store the array of the response of the data
   // handle the calling of the to_meet functions
   useEffect(() => {
     to_meet_func(setOptions);
   }, []);
-
-  const handleClose = () => {
-    props.onClose();
-  };
-  const handleCheckIn = () => {
-    props.checkin();
-  };
 
   //different states to store the details of the user
   const [name, setName] = useState("");
@@ -75,7 +68,6 @@ export default function CheckInModal(props) {
     backgroundColor: "black",
     borderRadius: "100%",
   };
-  if (!props.visible) return null;
 
   return (
     <>
@@ -188,7 +180,9 @@ export default function CheckInModal(props) {
                   </form>
                 </div>
                 <div className="absolute -top-3 -right-3 cursor-pointer rounded-full flex items-center justify-center">
-                  <IoClose style={close_style} onClick={handleClose} />
+                  <Link to={"/"}>
+                    <IoClose style={close_style} />
+                  </Link>
                 </div>
               </div>
             </div>
