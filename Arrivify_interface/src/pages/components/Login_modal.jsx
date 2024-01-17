@@ -1,30 +1,27 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
-export default function Login_modal(props) {
-  const handleClose = () => {
-    props.onClose();
-  };
+export default function Login_modal() {
   const close_style = {
     color: "white",
     fontSize: "2em",
     backgroundColor: "black",
     borderRadius: "100%",
   };
-  if (!props.visible) return null;
 
   return (
     <>
       <div
-        className="relative z-10"
+        className="relative z-10 h-screen w-full"
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
       >
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+        <div className="fixed inset-0  transition-opacity"></div>
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <div className="relative transform rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div className="relative transform rounded-lg bg-white text-left shadow-xl shadow-gray-500 transition-all sm:my-8 sm:w-full sm:max-w-lg">
               <div className="relative px-4 pb-4 pt-5 sm:p-6 sm:pb-4 rounded-lg">
                 <div className="flex justify-center items-center">
                   <form class="w-full max-w-xs">
@@ -77,7 +74,9 @@ export default function Login_modal(props) {
                   </form>
                 </div>
                 <div className="absolute -top-3 -right-3 cursor-pointer rounded-full flex items-center justify-center">
-                  <IoClose style={close_style} onClick={handleClose} />
+                  <Link to={"/"}>
+                    <IoClose style={close_style} />
+                  </Link>
                 </div>
               </div>
             </div>
