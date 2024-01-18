@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import VisitorsModel, EmployeeModel
 from .serializers import VisitorSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class VisitorsView(APIView):
     visitor_model = VisitorsModel
@@ -35,3 +36,11 @@ class EmployeesView(APIView):
         mydata = model.objects.all().values()
 
         return Response({"data": mydata}, status=status.HTTP_200_OK)
+
+
+class HomeView(APIView):
+    permission_classes = (IsAuthenticated,)
+    def get(self, request):
+        content = {'message': 'Welcome to the JWT Authentication page using React Js and Django!'}
+        return Response(content)
+    
