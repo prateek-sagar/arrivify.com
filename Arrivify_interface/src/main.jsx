@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login_modal from "./pages/components/Login_modal";
 import CheckInModal from "./pages/components/CheckInModal";
+import Logout from "./pages/components/Logout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     element: <Login_modal />,
   },
   { path: "/checkin", element: <CheckInModal /> },
+  { path: "/logout", element: <Logout /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
