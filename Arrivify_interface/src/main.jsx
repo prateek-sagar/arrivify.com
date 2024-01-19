@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login_modal from "./pages/components/Login_modal";
 import CheckInModal from "./pages/components/CheckInModal";
 import Logout from "./pages/components/Logout";
+import "./interceptor/axios";
 const router = createBrowserRouter([
   {
     path: "/",
